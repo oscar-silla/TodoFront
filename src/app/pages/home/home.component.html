@@ -1,0 +1,21 @@
+<div class="mt-3" *ngFor="let task of tasks;">
+    <mdb-card>
+        <!--Card content-->
+        <mdb-card-body>
+            <!--Title-->
+            <mdb-card-title class="flex">
+                <h4>{{task.title}}</h4>
+                <mdb-badge [color]="color(task.priority)" class='right'>{{task.priority}}</mdb-badge>
+            </mdb-card-title>
+
+            <!--Text-->
+            <mdb-card-text> 
+                {{task.todo}}
+            </mdb-card-text>
+
+            <a (click)="showMore(task._id)"  mdbBtn color="primary" mdbWavesEffect>
+                MORE..
+            </a>
+        </mdb-card-body>
+    </mdb-card>
+</div>

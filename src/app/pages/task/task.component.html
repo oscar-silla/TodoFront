@@ -1,0 +1,37 @@
+<div>
+    <div class="flex">
+        <h1>{{task?.title}}</h1>
+        <div class="buttons">
+            <button mdbBtn type="button" class="button" color="warning" mdbWavesEffect (click)="goModify(task._id)">
+                <i style="font-size: 28px;" class="ml-1 far fa-edit"></i>
+            </button>
+            <button mdbBtn type="button" class="button" color="danger" (click)="basicModal.show()" mdbWavesEffect>
+                <i style="font-size: 28px;" class="far fa-trash-alt"></i>
+            </button>
+            
+            <div mdbModal #basicModal="mdbModal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myBasicModalLabel" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close pull-right" aria-label="Close" (click)="basicModal.hide()">
+                        <span aria-hidden="true">×</span>
+                      </button>
+                      <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete the task?
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" mdbBtn color="primary" class="waves-light" aria-label="Close" (click)="basicModal.hide()" mdbWavesEffect>Close</button>
+                      <button type="button" mdbBtn color="danger" class="relative waves-light" (click)="deleteTask()" mdbWavesEffect>DELETE</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+        </div>
+    </div>
+    <hr>
+    <p>
+        {{task?.todo}}
+    </p>
+</div>

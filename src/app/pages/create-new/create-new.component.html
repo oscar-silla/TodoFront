@@ -1,0 +1,21 @@
+<form class="border border-light p-5" [formGroup]="taskForm">
+    <p class="h4 mb-4 text-center">Create new</p>
+    <input type="text" id="defaultContactFormName" formControlName='title' name="title" class="form-control "
+        placeholder="Title">
+    <label>Priority</label>
+    <select class="browser-default custom-select mb-4" formControlName='priority' (change)="select()"
+        name="priority">
+        <option value="" selected>Choose option</option>
+        <option value="Urgent">Urgent</option>
+        <option value="Important">Important</option>
+        <option value="Medium">Medium</option>
+        <option value="Low">Low</option>
+    </select>
+    <div class="form-group">
+        <textarea class="form-control rounded-0" id="exampleFormControlTextarea2" name="todo"
+            formControlName='todo' rows="3" placeholder="Message"></textarea>
+    </div>
+    <button mdbBtn color="info" block="true" (click)="onSubmit(taskForm.value)" type="submit">
+        Send
+    </button>
+</form>
