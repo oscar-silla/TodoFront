@@ -19,6 +19,7 @@ import { NotFoundComponent } from './pages/not-found/not-found.component';
 import { TaskComponent } from './pages/task/task.component';
 import { CreateNewComponent } from './pages/create-new/create-new.component';
 import { ModifyComponent } from './pages/modify/modify.component';
+import { ResultSearchComponent } from './pages/result-search/result-search.component';
 
 
 
@@ -31,7 +32,8 @@ import { ModifyComponent } from './pages/modify/modify.component';
     NotFoundComponent,
     TaskComponent,
     CreateNewComponent,
-    ModifyComponent
+    ModifyComponent,
+    ResultSearchComponent
   ],
   imports: [
     BrowserModule,

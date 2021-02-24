@@ -4,6 +4,7 @@ import { CreateNewComponent } from './pages/create-new/create-new.component';
 import { HomeComponent } from './pages/home/home.component';
 import { ModifyComponent } from './pages/modify/modify.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
+import { ResultSearchComponent } from './pages/result-search/result-search.component';
 import { TaskComponent } from './pages/task/task.component';
 
 const routes: Routes = [
@@ -12,6 +13,7 @@ const routes: Routes = [
     { path: 'task/:id', component: TaskComponent },
     { path: 'create', component: CreateNewComponent},
     { path: 'modify/:id', component: ModifyComponent },
+    { path: 'results/:title', component: ResultSearchComponent },
     { path: '**', component: NotFoundComponent }
 ];
 

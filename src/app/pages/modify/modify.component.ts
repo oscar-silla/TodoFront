@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { ITask } from 'src/app/interfaces/task.interface';
 import { TaskService } from 'src/app/services/task.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-modify',
@@ -14,6 +15,8 @@ export class ModifyComponent implements OnInit {
   taskForm: FormGroup;
   idTask: string;
   option: string;
+  showAlert: boolean = false;
+  showAlertError: boolean = false;
 
   task: ITask = {
     title: '',
@@ -32,7 +35,8 @@ export class ModifyComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute,
     private taskService: TaskService,
     private router: Router,
-    private fb: FormBuilder) { }
+    private fb: FormBuilder,
+    private location: Location) { }
 
   updateTaskForm() {
     this.taskForm = this.fb.group({
@@ -61,13 +65,25 @@ export class ModifyComponent implements OnInit {
   onSubmit(taskDetail: ITask) {
     if (taskDetail.title === "" || taskDetail.priority === ''
       || taskDetail.todo == "") {
-      alert('Tienes que rellenar todo el formulario');
+      this.showAlertError = true;
     } else {
       this.taskService.updateTask(this.idTask, taskDetail).subscribe(data => {
         console.log(data);
       });
-      this.router.navigate(['/home']);
+      this.showAlert = true;
+      this.showAlertError= false;
+      if (this.showAlert) {
+        setTimeout(() => {
+          this.showAlert=false;
+          console.log(this.showAlert);
+          this.router.navigate(['/home']);
+        }, 3000);
+      }
     }
+  }
+
+  goBack() {
+    this.location.back();
   }
 
 

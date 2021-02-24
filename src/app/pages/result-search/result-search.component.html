@@ -1,3 +1,5 @@
+<h1>Results of "{{title}}"</h1>
+<hr/>
 <div class="mt-3" *ngFor="let task of tasks;">
     <mdb-card>
         <mdb-card-body>
@@ -5,7 +7,7 @@
                 <h4>{{task.title}}</h4>
                 <mdb-badge [color]="color(task.priority)" class='right'>{{task.priority}}</mdb-badge>
             </mdb-card-title>
-            <mdb-card-text>
+            <mdb-card-text> 
                 {{task.todo}}
             </mdb-card-text>
             <a (click)="showMore(task._id)" mdbBtn color="primary" mdbWavesEffect>

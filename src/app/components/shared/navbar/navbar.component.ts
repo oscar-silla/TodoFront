@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+
 
 @Component({
   selector: 'app-navbar',
@@ -9,7 +11,7 @@ export class NavbarComponent implements OnInit {
 
   id: number;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
     switch (location.pathname) {
@@ -24,6 +26,10 @@ export class NavbarComponent implements OnInit {
 
   setActive(id: number) {
     this.id = id;
+  }
+
+  showText(text: string) {    
+    this.router.navigate(['/results', text]);
   }
 
 }

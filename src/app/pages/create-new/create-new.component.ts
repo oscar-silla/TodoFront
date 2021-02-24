@@ -17,6 +17,8 @@ export class CreateNewComponent implements OnInit {
 
   taskForm: FormGroup;
   selected: string = '';
+  showAlert: boolean = false;
+  showAlertError: boolean = false;
 
   task: ITask = {
     title: '',
@@ -65,12 +67,21 @@ export class CreateNewComponent implements OnInit {
     // Validations
     if (taskDetail.title === "" || taskDetail.priority === ''
       || taskDetail.todo == "") {
-      alert('Tienes que rellenar todo el formulario');
+      this.showAlertError = true;
     } else {
       this.taskService.createNewTask(taskDetail).subscribe(data => {
         console.log(data)
       });
-      this.router.navigate(['/home']);
+      this.showAlert = true;
+      this.showAlertError = false;
+
+      if (this.showAlert) {
+        setTimeout(() => {
+          this.showAlert=false;
+          console.log(this.showAlert);
+          this.router.navigate(['/home']);
+        }, 3000);
+      }
     }
   }
 

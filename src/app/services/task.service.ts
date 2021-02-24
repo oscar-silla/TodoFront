@@ -36,6 +36,15 @@ export class TaskService {
   }
 
   /**
+   * @GET - Search Task By Title
+  */
+  searchTask(title: string) {
+    return this.getAllTasks().then(data => {
+      return data.filter(task => task.title.toLocaleLowerCase().includes(title.toLocaleLowerCase()));
+    });
+  }
+
+  /**
    * @POST - Create Task
   */
   createNewTask(taskDetail: ITask) {
