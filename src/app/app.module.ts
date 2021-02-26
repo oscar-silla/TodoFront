@@ -23,6 +23,7 @@ import { ResultSearchComponent } from './pages/result-search/result-search.compo
 
 
 
+
 @NgModule({
   declarations: [
     AppComponent,

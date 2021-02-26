@@ -32,7 +32,7 @@ export class TaskService {
     return this.http.get(`${this.base_url}tasks/${id}`)
       .toPromise()
       .then(res => <ITask>res['data'])
-      .then(data => {return data});
+      .then(data => { return data });
   }
 
   /**
@@ -48,27 +48,33 @@ export class TaskService {
    * @POST - Create Task
   */
   createNewTask(taskDetail: ITask) {
-    const headers = { 'content-type': 'application/json'}  
-    const body=JSON.stringify(taskDetail);
+    const headers = { 'content-type': 'application/json' }
+    const body = JSON.stringify(taskDetail);
     console.log(body)
-    return this.http.post(this.base_url + 'tasks/create', body,{'headers':headers})
+    return this.http.post(this.base_url + 'tasks/create', body, { 'headers': headers })
   }
 
   /**
    * @PUT - Update Task
   */
-  updateTask(id:string, taskDetail: ITask) {
-    const headers = {'content-type': 'application/json'}
+  updateTask(id: string, taskDetail: ITask) {
+    /* const headers = {'content-type': 'application/json'}
+    const body = JSON.stringify(taskDetail);
+    return this.http.put(this.base_url + `tasks/update/${id}`, body, {'headers': headers})
+    .toPromise()
+    .then(res => <ITask[]> res['data'])    // <--------------
+    .then(data => { return data; }); */
+    const headers = { 'content-type': 'application/json' }
     const body = JSON.stringify(taskDetail);
     console.log(body);
-    return this.http.put(this.base_url + `tasks/update/${id}`, body, {'headers': headers});
+    return this.http.put(this.base_url + `tasks/update/${id}`, body, { 'headers': headers });
   }
 
   /**
    * @DELETE - Delete Task
   */
- deleteTask(id: string) {
-   const headers = {'content-type': 'application/json'};
-   return this.http.delete(this.base_url + `tasks/delete/${id}`, {'headers': headers});
- }
+  deleteTask(id: string) {
+    const headers = { 'content-type': 'application/json' };
+    return this.http.delete(this.base_url + `tasks/delete/${id}`, { 'headers': headers });
+  }
 }

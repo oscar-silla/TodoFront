@@ -1,4 +1,4 @@
-<form class="border border-light p-5" [formGroup]="taskForm">
+<form class="text-center border border-light p-5 animated fadeIn fast" [formGroup]="taskForm">
     <div *ngIf="showAlert">
         <div class="alert alert-success" role="alert">
             The task has been created! You will be redirected..
@@ -10,7 +10,7 @@
         </div>
     </div>
     <p class="h4 mb-4 text-center">Create new</p>
-    <input type="text" id="defaultContactFormName" formControlName='title' name="title" class="form-control "
+    <input type="text" id="defaultContactFormName" formControlName='title' name="title" class="form-control mb-4"
         placeholder="Title">
     <label>Priority</label>
     <select class="browser-default custom-select mb-4" formControlName='priority' (change)="select()" name="priority">

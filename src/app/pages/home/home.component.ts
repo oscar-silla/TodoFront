@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 // MDB Angular Pro
 import { ButtonsModule, WavesModule, CardsModule } from 'angular-bootstrap-md';
 // Service
@@ -15,13 +15,16 @@ import { ITask } from '../../interfaces/task.interface';
 export class HomeComponent implements OnInit {
 
   tasks: ITask[] = [];
+  dataToChange: ITask;
+  
+
   constructor(private taskService: TaskService,
-              private router : Router) { }
+    private router: Router,
+    private activatedRoute: ActivatedRoute) { }
 
   ngOnInit(): void {
     this.taskService.getAllTasks().then(data => {
       this.tasks = data;
-      console.log(this.tasks)
     })
   }
 
@@ -40,4 +43,23 @@ export class HomeComponent implements OnInit {
     }
   }
 
+  changeStatus(id: string) {
+    this.taskService.getTaskById(id).then(data => {
+      if (data.done == false) {
+        data.done = true;
+          this.taskService.updateTask(id, data).subscribe(() => {
+            this.taskService.getAllTasks().then(data => {
+              this.tasks = data;
+            })
+        });
+      } else {
+        data.done = false;
+          this.taskService.updateTask(id, data).subscribe(() => {
+            this.taskService.getAllTasks().then(data => {
+              this.tasks = data;
+            })
+        });
+      }
+    });
+  }
 }

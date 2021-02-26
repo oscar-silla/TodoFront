@@ -17,6 +17,7 @@ export class ResultSearchComponent implements OnInit {
 
   title: string;
   tasks: ITask[];
+  status: boolean = false;
 
   constructor(private activatedRoute: ActivatedRoute,
               private taskService: TaskService,
@@ -44,6 +45,26 @@ export class ResultSearchComponent implements OnInit {
       case 'medium': return 'green';
       case 'low': return 'blue';
     }
+  }
+
+  changeStatus(id: string) {
+    this.taskService.getTaskById(id).then(data => {
+      if (data.done == false) {
+        data.done = true;
+          this.taskService.updateTask(id, data).subscribe(() => {
+            this.taskService.searchTask(this.title).then(data => {
+              this.tasks = data;
+            })
+        });
+      } else {
+        data.done = false;
+          this.taskService.updateTask(id, data).subscribe(() => {
+            this.taskService.searchTask(this.title).then(data => {
+              this.tasks = data;
+            })
+        });
+      }
+    });
   }
 
 }

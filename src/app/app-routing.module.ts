@@ -10,6 +10,7 @@ import { TaskComponent } from './pages/task/task.component';
 const routes: Routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
     { path: 'home', component: HomeComponent },
+    { path: 'home/updated', component: HomeComponent },
     { path: 'task/:id', component: TaskComponent },
     { path: 'create', component: CreateNewComponent},
     { path: 'modify/:id', component: ModifyComponent },

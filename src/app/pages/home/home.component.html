@@ -8,9 +8,24 @@
             <mdb-card-text>
                 {{task.todo}}
             </mdb-card-text>
-            <a (click)="showMore(task._id)" mdbBtn color="primary" mdbWavesEffect>
-                MORE..
-            </a>
+            <div class="flex">
+                <a (click)="showMore(task._id)" mdbBtn color="primary" mdbWavesEffect>
+                    MORE..
+                </a>
+
+                <div class="right mr-2">
+                    <div *ngIf="!task.done">
+                        <a (click)="changeStatus(task._id)" mdbBtn color="warning" mdbWavesEffect>
+                            Pendient
+                        </a>
+                    </div>
+                    <div *ngIf="task.done">
+                        <a (click)="changeStatus(task._id)" mdbBtn color="success" mdbWavesEffect>
+                            Done
+                        </a>
+                    </div>
+                </div>
+            </div>
         </mdb-card-body>
     </mdb-card>
 </div>
